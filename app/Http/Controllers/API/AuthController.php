@@ -35,6 +35,7 @@ class AuthController extends Controller
             ]);
         }
     }
+    // Login function
     public function login(Request $request){
         $validator= Validator::make($request->all(),[
             'email'=>'required|max:191',
