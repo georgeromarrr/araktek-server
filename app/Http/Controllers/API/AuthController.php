@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller
 {
+    // Register function
     public function register(Request $request){
         $validator= Validator::make($request->all(),[
             'name'=>'required|max:191',
