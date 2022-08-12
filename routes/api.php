@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\ProductDetailsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
@@ -14,6 +19,13 @@ use App\Http\Controllers\API\AuthController;
 |
 */
 
+
+Route::resource('product_details', ProductDetailsController::class);
+Route::resource('discounts', DiscountController::class);
+Route::resource('brands', BrandController::class);
+Route::resource('categories', CategoryController::class);
+Route::resource('products', ProductController::class);
+Route::get('/products/search/{name}', [ProductController::class, 'search']);
 
 
 Route::post('register', [AuthController::class,'register']);
