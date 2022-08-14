@@ -13,9 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('brands', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->string('meta_title')->nullable();
+            $table->mediumText('meta_keyword')->nullable();
+            $table->mediumText('meta_description')->nullable();
+            $table->string('slug');
             $table->string('name');
+            $table->longText('description')->nullable();
+            $table->tinyInteger('status')->default('0');
             $table->timestamps();
         });
     }
@@ -27,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brands');
+        Schema::dropIfExists('categories');
     }
 };
