@@ -10,6 +10,7 @@ use App\Http\Controllers\API\RoleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\Api\FrontendController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,6 +27,12 @@ use App\Http\Controllers\API\AuthController;
 
 Route::post('register', [AuthController::class,'register']);
 Route::post('login', [AuthController::class, 'login']);
+
+// JOHN DATA
+
+Route::get('getCategory', [FrontendController::class,'category']);
+Route::get('fetchproducts/{slug}', [FrontendController::class, 'product']);
+
 
 Route::middleware(['auth:sanctum','isAPIAdmin'])->group(function(){
 
