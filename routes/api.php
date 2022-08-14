@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\ProductController;
-use App\Http\Controllers\BrandController;
+use App\Http\Controllers\API\BrandController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\API\RoleController;
@@ -32,6 +32,13 @@ Route::middleware(['auth:sanctum','isAPIAdmin'])->group(function(){
     Route::get('/checkingAuthenticated', function() {
         return response()->json(['message'=>'You are in', 'status'=>200], 200);
     });
+    //Brand
+    Route::get('view-brand', [BrandController::class, 'index']);
+    Route::post('store-brand', [BrandController::class, 'store']);
+    Route::get('edit-brand/{id}', [BrandController::class, 'edit']);
+    Route::put('update-brand/{id}', [BrandController::class, 'update']);
+    Route::delete('delete-brand/{id}', [BrandController::class, 'destroy']);
+
     //Role
     Route::get('view-role', [RoleController::class, 'index']);
     Route::post('store-role', [RoleController::class, 'store']);
