@@ -98,7 +98,7 @@ class ProductController extends Controller
 
             $product = Product::find($id);
             if ($product) {
-                
+
                 $product->category_id = $request->input('category_id');
                 $product->slug = $request->input('slug');
                 $product->name = $request->input('name');
