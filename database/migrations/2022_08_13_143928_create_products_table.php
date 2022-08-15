@@ -30,6 +30,7 @@ return new class extends Migration
             $table->tinyInteger('featured')->default('0')->nullable();
             $table->tinyInteger('popular')->default('0')->nullable();
             $table->tinyInteger('status')->default('0');
+            $table->integer('ratings');
             $table->timestamps();
         });
     }

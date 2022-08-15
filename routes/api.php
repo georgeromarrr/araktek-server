@@ -6,6 +6,7 @@ use App\Http\Controllers\API\BrandController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\API\RoleController;
+use App\Http\Controllers\API\ReviewController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -66,10 +67,13 @@ Route::middleware(['auth:sanctum','isAPIAdmin'])->group(function(){
     // Route::post('store-subcategory', [SubCategoryController::class, 'store']);
 
     //Products
-    Route::post('store-product', [ProductController::class, 'store']);
     Route::get('view-product', [ProductController::class, 'index']);
+    Route::post('store-product', [ProductController::class, 'store']);
     Route::put('update-product/{id}', [ProductController::class, 'update']);
-    
+
+
+    //Reviews
+    Route::post('store-review', [ReviewController::class, 'store']);
 });
 
 Route::middleware(['auth:sanctum'])->group(function(){
