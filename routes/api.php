@@ -73,7 +73,11 @@ Route::middleware(['auth:sanctum','isAPIAdmin'])->group(function(){
 
 
     //Reviews
+    Route::get('view-review', [ReviewController::class, 'index']);
     Route::post('store-review', [ReviewController::class, 'store']);
+    Route::get('edit-review/{id}', [ReviewController::class, 'edit']);
+    Route::put('update-review/{id}', [ReviewController::class, 'update']);
+    Route::delete('delete-review/{id}', [ReviewController::class, 'destroy']);
 });
 
 Route::middleware(['auth:sanctum'])->group(function(){
