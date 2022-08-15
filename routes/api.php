@@ -54,11 +54,14 @@ Route::middleware(['auth:sanctum','isAPIAdmin'])->group(function(){
     Route::delete('delete-category/{id}', [CategoryController::class, 'destroy']);
     Route::get('all-category', [CategoryController::class, 'allcategory']);
 
-
+    //Sub Category
+    // Route::post('store-subcategory', [SubCategoryController::class, 'store']);
 
     //Products
     Route::post('store-product', [ProductController::class, 'store']);
     Route::get('view-product', [ProductController::class, 'index']);
+    Route::put('update-product/{id}', [ProductController::class, 'update']);
+    
 });
 
 Route::middleware(['auth:sanctum'])->group(function(){
