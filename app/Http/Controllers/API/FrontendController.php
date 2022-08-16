@@ -49,23 +49,25 @@ class FrontendController extends Controller
     }
 
     
-    public function viewproduct($category_slug, $slug){
+    public function viewproduct($slug, $product_slug){
 
         $category = Category::where('slug', $slug)->where('status', '0')->first();
         if($category){
-            $product = Product::where('category_id', $category->id)->where('slug', $slug)->where('status','0')->first();
+            $product = Product::where('category_id', $category->id)
+            ->where('slug', $product_slug)
+            ->where('status','0')
+            ->first();
             if($product){
                 return response()->json([
                     'status'=>200,
-                    'product_data'=>[
-                        'product'=>$product,
-                    ]
+                    'product'=>$product,
+                    
                 ]);     
             }
             else{
             return response()->json([
                 'status'=>400,
-                'message'=>'No Such Product Available'
+                'message'=>'On development'
             ]);
             }
         }

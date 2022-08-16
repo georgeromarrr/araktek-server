@@ -32,7 +32,7 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::get('getCategory', [FrontendController::class,'category']);
 Route::get('fetchproducts/{slug}', [FrontendController::class, 'product']);
-Route::get('viewproductdetail/{product}/{slug}', [FrontendController::class, 'viewproduct']);
+Route::get('viewproductdetail/{slug}/{product_slug}', [FrontendController::class, 'viewproduct']);
 Route::get('allproduct', [FrontendController::class, 'index']);
 
 Route::middleware(['auth:sanctum','isAPIAdmin'])->group(function(){
