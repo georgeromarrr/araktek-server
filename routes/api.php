@@ -6,6 +6,7 @@ use App\Http\Controllers\API\BrandController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\API\RoleController;
+use App\Http\Controllers\API\CartController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,7 @@ Route::get('getCategory', [FrontendController::class,'category']);
 Route::get('fetchproducts/{slug}', [FrontendController::class, 'product']);
 Route::get('viewproductdetail/{slug}/{product_slug}', [FrontendController::class, 'viewproduct']);
 Route::get('allproduct', [FrontendController::class, 'index']);
+Route::post('addcart', [CartController::class, 'addtocart']);
 
 Route::middleware(['auth:sanctum','isAPIAdmin'])->group(function(){
 

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('product_id');
-            $table->integer('qty');
+            $table->integer('qty')->default('1');
             $table->timestamps();
         });
     }

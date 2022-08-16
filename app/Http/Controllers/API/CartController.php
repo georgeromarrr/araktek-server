@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Product;
 class CartController extends Controller
 {
     public function addtocart(Request $request) {
@@ -12,17 +12,16 @@ class CartController extends Controller
 
             $user_id = auth('sanctum')->user()->id;
             $product_id = $request->product_id;
-            $qty = $reqiest->qty;
+            $qty = $request->qty;
 
-            $product_check = Product::where('id')->first();
+            $productCheck = Product::where('id',$product_id)->first();
 
-            if($product_check) {
+            if($productCheck) {
 
                 if(Cart::where('product_id', $product_id)->where('user_id', $user_id)->exists()) {
-
                     return response()->json([
                         'status' => 409,
-                        'message' => $productCheck->name. 'Alreay added to cart'
+                        'message' => $productCheck->name. 'Already added to cart',
                     ]);
                 }
                 else {
