@@ -24,11 +24,10 @@ class ProductController extends Controller
             'slug' => 'required|max:191',
             'name' => 'required|max:191',
             'meta_title' => 'required|max:191',
-            'brand' => 'required|max:20',
             'selling_price' => 'required|max:20',
             'original_price' => 'required|max:20',
             'qty' => 'required|max:20',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -84,7 +83,7 @@ class ProductController extends Controller
             'selling_price' => 'required|max:20',
             'original_price' => 'required|max:20',
             'qty' => 'required|max:20',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator -> fails()) {
