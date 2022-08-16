@@ -20,14 +20,15 @@ class BrandController extends Controller
         ]); 
     }
 
-    // public function allbrand() {
+    public function showBrand() {
 
-    //     $brand= Brand::all();
-    //     return response()->json([
-    //         'status' => 200,
-    //         'category' => $category
-    //     ]);
-    // }
+        $brand= Brand::all();
+        return response()->json([
+            'status' => 200,
+            'brand' => $brand
+        ]);
+    }
+
 
     //passing brand data to edit
     public function edit($id) {

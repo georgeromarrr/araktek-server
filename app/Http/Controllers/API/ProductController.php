@@ -74,6 +74,23 @@ class ProductController extends Controller
         }
     }
 
+    public function edit($id) {
+        $product = Product::find($id);
+        if ($product) {
+
+            return response()->json([
+                'status' => 200,
+                'product' => $product
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'No Product Found'
+            ]);
+        }
+    }
+
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
             'category_id' => 'required',
@@ -135,6 +152,24 @@ class ProductController extends Controller
                     'message' => 'No Category Id Found',
                 ]);
             }
+        }
+    }
+
+    public function destroy($id) {
+        $product = Product::find($id);
+
+        if($product) {
+            $product->delete();
+            return response()->json([
+                'status' => 200,
+                'message' => 'Product Deleted Succesfully',
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'No Product Id Found',
+            ]);
         }
     }
 }

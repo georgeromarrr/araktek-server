@@ -38,6 +38,8 @@ Route::get('viewproductdetail/{product}/{slug}', [FrontendController::class, 'vi
 Route::get('allproduct', [FrontendController::class, 'index']);
 Route::post('add-to-cart', [CartController::class, 'addtocart']);
 
+Route::get('allbrand', [BrandController::class, 'showBrand']);
+
 
 Route::middleware(['auth:sanctum','isAPIAdmin'])->group(function(){
 
@@ -72,7 +74,10 @@ Route::middleware(['auth:sanctum','isAPIAdmin'])->group(function(){
     //Products
     Route::get('view-product', [ProductController::class, 'index']);
     Route::post('store-product', [ProductController::class, 'store']);
+    Route::get('edit-product/{id}', [ProductController::class, 'edit']);
     Route::put('update-product/{id}', [ProductController::class, 'update']);
+    Route::delete('delete-product/{id}', [ProductController::class, 'destroy']);
+
 
 
     //Reviews
