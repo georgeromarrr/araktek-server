@@ -16,16 +16,18 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->integer('category_id');
-            $table->integer('brand_id')->nullable();
             $table->string('meta_title')->nullable();
             $table->string('meta_keyword')->nullable();
             $table->string('meta_description')->nullable();
             $table->string('slug');
             $table->string('name');
             $table->mediumText('description')->nullable();
+            $table->string('brand');
             $table->integer('selling_price');
             $table->integer('original_price');
-            $table->intger('qty');
+            $table->integer('qty');
+            $table->integer('review')->default('0')->nullable();
+            $table->integer('rating')->default('0')->nullable();
             $table->string('image')->nullable();
             $table->tinyInteger('featured')->default('0')->nullable();
             $table->tinyInteger('popular')->default('0')->nullable();

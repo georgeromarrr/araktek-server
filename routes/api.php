@@ -6,8 +6,6 @@ use App\Http\Controllers\API\BrandController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\API\RoleController;
-use App\Http\Controllers\API\ReviewController;
-use App\Http\Controllers\API\CartController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,8 +34,6 @@ Route::get('getCategory', [FrontendController::class,'category']);
 Route::get('fetchproducts/{slug}', [FrontendController::class, 'product']);
 Route::get('viewproductdetail/{product}/{slug}', [FrontendController::class, 'viewproduct']);
 Route::get('allproduct', [FrontendController::class, 'index']);
-Route::post('add-to-cart', [CartController::class, 'addtocart']);
-
 
 Route::middleware(['auth:sanctum','isAPIAdmin'])->group(function(){
 
@@ -66,21 +62,11 @@ Route::middleware(['auth:sanctum','isAPIAdmin'])->group(function(){
     Route::delete('delete-category/{id}', [CategoryController::class, 'destroy']);
     Route::get('all-category', [CategoryController::class, 'allcategory']);
 
-    //Sub Category
-    // Route::post('store-subcategory', [SubCategoryController::class, 'store']);
+
 
     //Products
-    Route::get('view-product', [ProductController::class, 'index']);
     Route::post('store-product', [ProductController::class, 'store']);
-    Route::put('update-product/{id}', [ProductController::class, 'update']);
-
-
-    //Reviews
-    Route::get('view-review', [ReviewController::class, 'index']);
-    Route::post('store-review', [ReviewController::class, 'store']);
-    Route::get('edit-review/{id}', [ReviewController::class, 'edit']);
-    Route::put('update-review/{id}', [ReviewController::class, 'update']);
-    Route::delete('delete-review/{id}', [ReviewController::class, 'destroy']);
+    Route::get('view-product', [ProductController::class, 'index']);
 });
 
 Route::middleware(['auth:sanctum'])->group(function(){
